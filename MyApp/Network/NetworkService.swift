@@ -1,5 +1,5 @@
 //
-//  APIClient.swift
+//  NetworkService.swift
 //  MyApp
 //
 //  Created by Kenneth James Uy on 12/4/23.
@@ -7,28 +7,28 @@
 
 import Foundation
 
-protocol APIClientProtocol {
+protocol NetworkServiceProtocol {
 	
 	func request<T: Codable>(
 		urlString: String,
 		parameters: [String: Any]?,
-		method: Method,
+		method: NetworkMethod,
 		type: T.Type,
 		completion: @escaping (Result<T, NetworkError>) -> Void
-	) -> URLSessionDataTask
+	) -> NetworkTask
 }
 
-class APIClient: APIClientProtocol {
+class NetworkService: NetworkServiceProtocol {
 
 	private let session = URLSession.shared
 	
 	func request<T: Codable>(
 		urlString: String,
 		parameters: [String: Any]? = nil,
-		method: Method,
+		method: NetworkMethod,
 		type: T.Type,
 		completion: @escaping (Result<T, NetworkError>) -> Void
-	) -> URLSessionDataTask {
+	) -> NetworkTask {
 		let defaultHeaders = [
 			"Content-Type": "application/json"
 		]
@@ -68,19 +68,4 @@ class APIClient: APIClientProtocol {
 		task.resume()
 		return task
 	}
-}
-
-enum Method: String {
-	
-	case get
-	case post
-	case put
-}
-
-enum NetworkError: Error {
-	
-	case invalidURL
-	case invalidResponse
-	case requestFailed
-	case decodingFailed
 }
