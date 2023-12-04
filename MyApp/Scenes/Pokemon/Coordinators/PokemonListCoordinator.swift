@@ -12,6 +12,8 @@ class PokemonListCoordinator: NavigationCoordinator {
 			.storyboard.pokemon.pokemonListController()
 		else { return }
 		
+		pokemonListController.viewModel = PokemonListViewModel(pokemonAPI: services.pokemonAPI)
+		
 		navigation.pushViewController(pokemonListController, animated: true)
 	}
 }
