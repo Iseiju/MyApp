@@ -10,6 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
+	var window: UIWindow?
 	var services: AppServices!
 
 	func application(
@@ -36,4 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		_ application: UIApplication,
 		didDiscardSceneSessions sceneSessions: Set<UISceneSession>
 	) {}
+}
+
+extension UIApplication {
+	
+	static var myApp: AppDelegate {
+		return UIApplication.shared.delegate as! AppDelegate
+	}
 }
