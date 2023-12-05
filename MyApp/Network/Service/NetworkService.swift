@@ -10,7 +10,7 @@ import Foundation
 protocol NetworkServiceProtocol {
 	
 	func request<T: Codable>(
-		urlString: String,
+		endpoint: NetworkEndpoint,
 		parameters: [String: Any]?,
 		method: NetworkMethod,
 		type: T.Type,
@@ -18,12 +18,17 @@ protocol NetworkServiceProtocol {
 	) -> NetworkTask
 }
 
-class NetworkService: NetworkServiceProtocol {
+protocol NetworkEndpoint {
+	
+	var urlString: String { get }
+}
+
+final class NetworkService: NetworkServiceProtocol {
 
 	private let session = URLSession.shared
 	
 	func request<T: Codable>(
-		urlString: String,
+		endpoint: NetworkEndpoint,
 		parameters: [String: Any]? = nil,
 		method: NetworkMethod,
 		type: T.Type,
@@ -33,7 +38,7 @@ class NetworkService: NetworkServiceProtocol {
 			"Content-Type": "application/json"
 		]
 		
-		var request = URLRequest(url: URL(string: urlString)!)
+		var request = URLRequest(url: URL(string: endpoint.urlString)!)
 		request.httpMethod = method.rawValue.uppercased()
 		request.allHTTPHeaderFields = defaultHeaders
 		

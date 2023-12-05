@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
-	private var rootCoordinator: AppCoordinator?
+	private var rootCoordinator: RootCoordinator?
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		myAppDelegate.window = window
 		self.window = window
 		
-		rootCoordinator = AppCoordinator(window, services: myAppDelegate.services)
+		rootCoordinator = RootCoordinator(window, services: myAppDelegate.services)
 		rootCoordinator?.start()
 	}
 

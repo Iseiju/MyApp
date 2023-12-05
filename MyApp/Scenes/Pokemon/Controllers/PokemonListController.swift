@@ -30,10 +30,8 @@ class PokemonListController: UIViewController {
 	
 	private func getPokemons() {
 		viewModel?.getPokemons() { [weak self] errorOrNil in
-			guard let self = self, errorOrNil == nil else { return }
-			
 			DispatchQueue.main.async {
-				self.tableView.reloadData()
+				self?.tableView.reloadData()
 			}
 		}
 	}

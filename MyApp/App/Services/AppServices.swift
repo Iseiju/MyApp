@@ -11,7 +11,7 @@ protocol AppServicesProtocol {
 	var pokemonAPI: PokemonAPIProtocol { get }
 }
 
-class AppServices: AppServicesProtocol {
+final class AppServices: AppServicesProtocol {
 	
 	var networkService: NetworkServiceProtocol
 	var pokemonAPI: PokemonAPIProtocol

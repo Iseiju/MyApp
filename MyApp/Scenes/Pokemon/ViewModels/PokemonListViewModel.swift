@@ -24,11 +24,9 @@ class PokemonListViewModel: PokemonListViewModelProtocol {
 
 	func getPokemons(errorOrNil: @escaping (NetworkError?) -> Void) {
 		pokemonAPI.getPokemons() { [weak self] apiResult in
-			guard let self = self else { return }
-			
 			switch apiResult {
 			case .success(let pokemons):
-				self.cellViewModels = pokemons.map { PokemonListCellViewModel($0) }
+				self?.cellViewModels = pokemons.map { PokemonListCellViewModel($0) }
 				errorOrNil(nil)
 				
 			case .failure(let error):

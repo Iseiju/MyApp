@@ -1,5 +1,5 @@
 //
-//  AppCoordinator.swift
+//  RootCoordinator.swift
 //  MyApp
 //
 //  Created by Kenneth James Uy on 12/4/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppCoordinator: NavigationCoordinator {
+final class RootCoordinator: NavigationCoordinator {
 	
 	private var window: UIWindow
 	
