@@ -30,7 +30,6 @@ final class PokemonListViewModelTest: XCTestCase {
 	
 	func testGetPokemonsFailure() {
 		let (sut, mock) = makeMockSut()
-		let stub = makePokemonStub()
 		mock.pokemonsResult.result = .failure(.requestFailed)
 		
 		sut.getPokemons() { _ in }
