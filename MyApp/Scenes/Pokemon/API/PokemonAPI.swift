@@ -5,10 +5,20 @@
 //  Created by Kenneth James Uy on 12/4/23.
 //
 
-private enum PokemonAPIEndpoints: NetworkEndpoint {
+private enum PokemonAPI: NetworkClient {
 	
 	case getPokemons
 	case getSample
+	
+	var method: NetworkMethod {
+		switch self {
+		case .getPokemons:
+			return .get
+			
+		case .getSample:
+			return .get
+		}
+	}
 	
 	var urlString: String {
 		switch self {
@@ -19,6 +29,8 @@ private enum PokemonAPIEndpoints: NetworkEndpoint {
 			return ""
 		}
 	}
+	
+	var parameters: [String : Any]? { return nil }
 }
 
 protocol PokemonAPIProtocol {
@@ -35,8 +47,7 @@ extension NetworkService: PokemonAPIProtocol {
 		result: @escaping (Result<[Pokemon], NetworkError>) -> Void
 	) -> NetworkTask {		
 		return request(
-			endpoint: PokemonAPIEndpoints.getPokemons,
-			method: .get,
+			client: PokemonAPI.getPokemons,
 			type: APIResponse<[Pokemon]>.self) { apiResult in
 				switch apiResult {
 				case .success(let apiResponse):

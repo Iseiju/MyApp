@@ -32,6 +32,7 @@
 		E67115BF2B1EE0E6003E5E0C /* NetworkDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67115BE2B1EE0E6003E5E0C /* NetworkDummy.swift */; };
 		E67115C12B1EE137003E5E0C /* PokemonAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67115C02B1EE137003E5E0C /* PokemonAPIMock.swift */; };
 		E67115C52B1EE2F6003E5E0C /* NetworkMockResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67115C42B1EE2F6003E5E0C /* NetworkMockResult.swift */; };
+		E6E5889E2B21BB9100EEB40A /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5889D2B21BB9000EEB40A /* NetworkClient.swift */; };
 		E6F377A82B1D793700F78E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F377A72B1D793700F78E94 /* AppDelegate.swift */; };
 		E6F377AA2B1D793700F78E94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F377A92B1D793700F78E94 /* SceneDelegate.swift */; };
 		E6F377B12B1D793800F78E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6F377B02B1D793800F78E94 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		E67115BE2B1EE0E6003E5E0C /* NetworkDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDummy.swift; sourceTree = "<group>"; };
 		E67115C02B1EE137003E5E0C /* PokemonAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPIMock.swift; sourceTree = "<group>"; };
 		E67115C42B1EE2F6003E5E0C /* NetworkMockResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMockResult.swift; sourceTree = "<group>"; };
+		E6E5889D2B21BB9000EEB40A /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		E6F377A42B1D793700F78E94 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F377A72B1D793700F78E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6F377A92B1D793700F78E94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		E66A85702B1D98BE0067C241 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E6E5889D2B21BB9000EEB40A /* NetworkClient.swift */,
 				E66A85732B1D98FB0067C241 /* NetworkError.swift */,
 				E66A85712B1D98D70067C241 /* NetworkMethod.swift */,
 				E66A857F2B1D9BC50067C241 /* NetworkTask.swift */,
@@ -660,6 +663,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6E5889E2B21BB9100EEB40A /* NetworkClient.swift in Sources */,
 				E66A85872B1DA42F0067C241 /* PokemonListCoordinator.swift in Sources */,
 				E66A85912B1DAAD70067C241 /* R.generated.swift in Sources */,
 				E66A85722B1D98D70067C241 /* NetworkMethod.swift in Sources */,

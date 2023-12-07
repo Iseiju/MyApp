@@ -10,17 +10,10 @@ import Foundation
 protocol NetworkServiceProtocol {
 	
 	func request<T: Codable>(
-		endpoint: NetworkEndpoint,
-		parameters: [String: Any]?,
-		method: NetworkMethod,
+		client: NetworkClient,
 		type: T.Type,
 		completion: @escaping (Result<T, NetworkError>) -> Void
 	) -> NetworkTask
-}
-
-protocol NetworkEndpoint {
-	
-	var urlString: String { get }
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -28,9 +21,7 @@ final class NetworkService: NetworkServiceProtocol {
 	private let session = URLSession.shared
 	
 	func request<T: Codable>(
-		endpoint: NetworkEndpoint,
-		parameters: [String: Any]? = nil,
-		method: NetworkMethod,
+		client: NetworkClient,
 		type: T.Type,
 		completion: @escaping (Result<T, NetworkError>) -> Void
 	) -> NetworkTask {
@@ -38,11 +29,11 @@ final class NetworkService: NetworkServiceProtocol {
 			"Content-Type": "application/json"
 		]
 		
-		var request = URLRequest(url: URL(string: endpoint.urlString)!)
-		request.httpMethod = method.rawValue.uppercased()
+		var request = URLRequest(url: URL(string: client.urlString)!)
+		request.httpMethod = client.method.rawValue.uppercased()
 		request.allHTTPHeaderFields = defaultHeaders
 		
-		if let bodyParameters = parameters,
+		if let bodyParameters = client.parameters,
 				let bodyData = try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) {
 			request.httpBody = bodyData as Data
 		}
