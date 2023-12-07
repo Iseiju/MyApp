@@ -11,14 +11,6 @@ final class NetworkMockResult<T> {
 	
 	var result: Result<T, NetworkError>?
 	
-	func success(_ value: T) {
-		result = Result<T, NetworkError>.success(value)
-	}
-	
-	func failure(_ error: NetworkError) {
-		result = Result<T, NetworkError>.failure(error)
-	}
-	
 	func attempt(_ completion: (Result<T, NetworkError>) -> Void) {
 		result.map(completion)
 		result = nil

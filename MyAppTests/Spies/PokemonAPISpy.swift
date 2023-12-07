@@ -10,7 +10,7 @@ import Foundation
 
 final class PokemonAPISpy: PokemonAPIProtocol {
 	
-	enum Method: Equatable {
+	enum Method {
 		
 		case getPokemons
 	}
