@@ -39,6 +39,11 @@ class PokemonListController: UIViewController {
 							 cellType: PokemonCell.self)) { _, cvm, cell in
 				cell.cellViewModel = cvm
 			}.disposed(by: disposeBag)
+		
+		tableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+			let item = self?.viewModel?.cvmRelay.value[indexPath.row]
+			self?.presentAlert(title: item?.name ?? "")
+		}).disposed(by: disposeBag)
 	}
 	
 	private func getPokemons() {
@@ -47,5 +52,16 @@ class PokemonListController: UIViewController {
 				self?.tableView.reloadData()
 			}
 		}
+	}
+	
+	private func presentAlert(title: String) {
+		let alertController = UIAlertController(
+			title: title, message: "", preferredStyle: .alert
+		)
+		
+		let okay = UIAlertAction(title: "Okay", style: .default)
+		alertController.addAction(okay)
+		
+		present(alertController, animated: true)
 	}
 }
