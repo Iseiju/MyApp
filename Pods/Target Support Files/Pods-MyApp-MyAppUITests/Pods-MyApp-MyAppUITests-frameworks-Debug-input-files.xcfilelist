@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-MyApp-MyAppUITests/Pods-MyApp-MyAppUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/MyComponent/MyComponent.framework
 ${BUILT_PRODUCTS_DIR}/R.swift/RswiftResources.framework

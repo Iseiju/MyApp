@@ -1,16 +1,23 @@
 PODS:
+  - MyComponent (0.1.0)
   - R.swift (7.3.2)
 
 DEPENDENCIES:
+  - MyComponent (from `/Users/iseiju/Developer/MyApp/Components/MyComponent`)
   - R.swift (= 7.3.2)
 
 SPEC REPOS:
   trunk:
     - R.swift
 
+EXTERNAL SOURCES:
+  MyComponent:
+    :path: "/Users/iseiju/Developer/MyApp/Components/MyComponent"
+
 SPEC CHECKSUMS:
+  MyComponent: 6813d25cc2b676f45ede4f46113b89a815cff918
   R.swift: 0af0d882f49f03711415cb4e5215daa977d8a480
 
-PODFILE CHECKSUM: 8bc25ae7a752e7e15324ac13c2c6aa04922b4156
+PODFILE CHECKSUM: f07ed87890006bdbd519116b2f53bc24babea9a3
 
 COCOAPODS: 1.12.1

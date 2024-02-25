@@ -1,0 +1,22 @@
+{
+  "name": "MyComponent",
+  "version": "0.1.0",
+  "summary": "A short description of MyComponent.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Kenneth James Uy/MyComponent",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Kenneth James Uy": "uy.kennethjames23@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Kenneth James Uy/MyComponent.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "MyComponent/Classes/**/*"
+}

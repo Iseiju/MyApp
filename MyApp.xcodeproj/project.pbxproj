@@ -471,9 +471,17 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		E6B4AFD22B8B783E007F25B1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E6F3779B2B1D793700F78E94 = {
 			isa = PBXGroup;
 			children = (
+				E6B4AFD22B8B783E007F25B1 /* Components */,
 				E6F377A62B1D793700F78E94 /* MyApp */,
 				E6F377BD2B1D793800F78E94 /* MyAppTests */,
 				E6F377C72B1D793800F78E94 /* MyAppUITests */,

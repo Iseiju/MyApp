@@ -7,6 +7,9 @@ target 'MyApp' do
 
   # Pods for MyApp
   pod 'R.swift', '7.3.2'
+	
+	# Components
+	pod 'MyComponent', :path => '/Users/iseiju/Developer/MyApp/Components/MyComponent'
 
   target 'MyAppTests' do
     inherit! :search_paths
