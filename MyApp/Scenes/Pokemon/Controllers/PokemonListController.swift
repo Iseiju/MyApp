@@ -59,7 +59,10 @@ class PokemonListController: UIViewController {
 			title: title, message: "", preferredStyle: .alert
 		)
 		
-		let okay = UIAlertAction(title: "Okay", style: .default)
+		let okay = UIAlertAction(title: "Okay", style: .default) { _ in
+			print(title)
+		}
+		
 		alertController.addAction(okay)
 		
 		present(alertController, animated: true)
