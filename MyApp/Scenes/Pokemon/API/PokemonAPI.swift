@@ -12,10 +12,7 @@ private enum PokemonAPI: NetworkClient {
 	
 	var method: NetworkMethod {
 		switch self {
-		case .getPokemons:
-			return .get
-			
-		case .getSample:
+		case .getPokemons, .getSample:
 			return .get
 		}
 	}

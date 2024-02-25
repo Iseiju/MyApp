@@ -1,13 +1,13 @@
 //
-//  NetworkMockResult.swift
+//  TestMockResult.swift
 //  MyAppTests
 //
-//  Created by Kenneth James Uy on 12/5/23.
+//  Created by Kenneth James Uy on 2/21/24.
 //
 
 @testable import MyApp
 
-final class NetworkMockResult<T: Codable> {
+final class TestMockResult<T: Codable> {
 	
 	var result: Result<T, NetworkError>?
 	
