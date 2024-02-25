@@ -25,7 +25,7 @@ final class PokemonListViewModelTest: XCTestCase {
 		
 		sut.getPokemons() { _ in }
 		
-		XCTAssertFalse(sut.cellViewModels.isEmpty)
+		XCTAssertFalse(sut.cvmRelay.value.isEmpty)
 	}
 	
 	func testGetPokemonsFailure() {
@@ -34,7 +34,7 @@ final class PokemonListViewModelTest: XCTestCase {
 		
 		sut.getPokemons() { _ in }
 		
-		XCTAssertTrue(sut.cellViewModels.isEmpty)
+		XCTAssertTrue(sut.cvmRelay.value.isEmpty)
 	}
 }
 

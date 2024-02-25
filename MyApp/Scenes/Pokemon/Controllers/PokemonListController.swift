@@ -5,11 +5,14 @@
 //  Created by Kenneth James Uy on 12/4/23.
 //
 
+import RxSwift
 import UIKit
 
 class PokemonListController: UIViewController {
 	
 	var viewModel: PokemonListViewModelProtocol?
+	
+	private let disposeBag = DisposeBag()
 	
 	@IBOutlet private weak var tableView: UITableView!
 	
@@ -17,15 +20,25 @@ class PokemonListController: UIViewController {
 		super.viewDidLoad()
 		
 		setupTableView()
+		setupBindings()
 		getPokemons()
 	}
 	
 	private func setupTableView() {
 		tableView.register(R.nib.pokemonCell)
-		tableView.delegate = self
-		tableView.dataSource = self
 		tableView.rowHeight = UITableView.automaticDimension
 		tableView.estimatedRowHeight = UITableView.automaticDimension
+	}
+	
+	private func setupBindings() {
+		viewModel?
+			.cvmRelay
+			.bind(to: tableView
+				.rx
+				.items(cellIdentifier: R.nib.pokemonCell.identifier,
+							 cellType: PokemonCell.self)) { _, cvm, cell in
+				cell.cellViewModel = cvm
+			}.disposed(by: disposeBag)
 	}
 	
 	private func getPokemons() {
@@ -34,28 +47,5 @@ class PokemonListController: UIViewController {
 				self?.tableView.reloadData()
 			}
 		}
-	}
-}
-
-extension PokemonListController: UITableViewDelegate {}
-
-extension PokemonListController: UITableViewDataSource {
-	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel?.cellViewModels.count ?? 0
-	}
-	
-	func tableView(
-		_ tableView: UITableView,
-		cellForRowAt indexPath: IndexPath
-	) -> UITableViewCell {
-		guard let pokemonCell = tableView
-			.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pokemonCell, for: indexPath),
-					let cellViewModel = viewModel?.cellViewModels[indexPath.row]
-		else { return UITableViewCell() }
-		
-		pokemonCell.cellViewModel = cellViewModel
-		
-		return pokemonCell
 	}
 }

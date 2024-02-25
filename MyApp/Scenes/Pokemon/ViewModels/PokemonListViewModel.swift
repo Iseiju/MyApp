@@ -5,16 +5,18 @@
 //  Created by Kenneth James Uy on 12/4/23.
 //
 
+import RxCocoa
+
 protocol PokemonListViewModelProtocol {
 	
-	var cellViewModels: [PokemonListCellViewModelProtocol] { get }
+	var cvmRelay: BehaviorRelay<[PokemonListCellViewModelProtocol]> { get }
 	
 	func getPokemons(errorOrNil: @escaping (NetworkError?) -> Void)
 }
 
 class PokemonListViewModel: PokemonListViewModelProtocol {
 	
-	var cellViewModels: [PokemonListCellViewModelProtocol] = []
+	let cvmRelay = BehaviorRelay<[PokemonListCellViewModelProtocol]>(value: [])
 	
 	private let pokemonAPI: PokemonAPIProtocol
 	
@@ -26,7 +28,9 @@ class PokemonListViewModel: PokemonListViewModelProtocol {
 		pokemonAPI.getPokemons() { [weak self] apiResult in
 			switch apiResult {
 			case .success(let pokemons):
-				self?.cellViewModels = pokemons.map { PokemonListCellViewModel($0) }
+				let cellViewModels = pokemons.map { PokemonListCellViewModel($0) }
+				self?.cvmRelay.accept(cellViewModels)
+				
 				errorOrNil(nil)
 				
 			case .failure(let error):
